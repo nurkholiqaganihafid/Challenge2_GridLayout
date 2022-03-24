@@ -15,12 +15,12 @@ public class OutputResultActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String getName = intent.getStringExtra("name");
-        String getHobby = intent.getStringExtra("hobby");
+        String getHobby = intent.getStringExtra("email");
 
         TextView resultName = findViewById(R.id.output_name);
         resultName.setText(getName);
 
-        TextView resultHobby = findViewById(R.id.output_hobby);
+        TextView resultHobby = findViewById(R.id.output_email);
         resultHobby.setText(getHobby);
 
     }

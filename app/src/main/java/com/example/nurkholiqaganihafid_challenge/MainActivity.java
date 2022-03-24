@@ -10,14 +10,14 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText edtName;
-    private EditText edtHobby;
+    private EditText edtEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         edtName = findViewById(R.id.edt_name);
-        edtHobby = findViewById(R.id.edt_hobby);
+        edtEmail = findViewById(R.id.edt_email);
     }
 
 //    public void sendBiodata(View view) {
@@ -35,27 +35,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v.getId() == R.id.btn_submit) {
             String name = edtName.getText().toString();
-            String hobby = edtHobby.getText().toString();
+            String email = edtEmail.getText().toString();
 
             Boolean isEmptyField = false;
             if (name.isEmpty()) {
                 isEmptyField = true;
-                edtName.setError("Tolong masukan nama anda");
+                edtName.setError("Tolong masukan nama lengkap anda");
             }
 
-            if (hobby.isEmpty()) {
+            if (email.isEmpty()) {
                 isEmptyField = true;
-                edtHobby.setError("Tolong masukan hobi anda");
+                edtEmail.setError("Tolong masukan email anda");
             }
 
             if (!isEmptyField) {
                 Intent moveIntent = new Intent(this, OutputResultActivity.class);
-                EditText fullName = findViewById(R.id.edt_name);
-                EditText cob = findViewById(R.id.edt_hobby);
-                String getName = fullName.getText().toString();
-                String getHobby = cob.getText().toString();
+                String getName = edtName.getText().toString();
+                String getEmail = edtEmail.getText().toString();
                 moveIntent.putExtra("name", getName);
-                moveIntent.putExtra("hobby", getHobby);
+                moveIntent.putExtra("email", getEmail);
                 startActivity(moveIntent);
             }
         }
